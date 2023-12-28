@@ -38,5 +38,13 @@ module RailsAppTest6
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    logger           = ActiveSupport::Logger.new($stdout)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_level = :debug
+
+    config.active_record.schema_format = :sql
+
   end
 end
