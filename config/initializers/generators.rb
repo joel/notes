@@ -3,5 +3,5 @@ Rails.application.config.generators do |generator|
   generator.javascripts false
   generator.stylesheets false
 
-    generator.orm :active_record, primary_key_type: :uuid
-  end
+  generator.orm :active_record, primary_key_type: :uuid
+end
