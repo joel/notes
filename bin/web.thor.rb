@@ -38,9 +38,7 @@ class Web < Thor
           -v #{Dir.pwd}/app:/rails/app:delegated \
           -v #{Dir.pwd}/config:/rails/config:delegated \
           -v #{Dir.pwd}/lib:/rails/lib:delegated \
-          -v #{Dir.pwd}/bin:/rails/bin:delegated \
-          -v #{Dir.pwd}/db:/rails/db:delegated \
-          -v #{Dir.pwd}/spec:/rails/spec:delegated \
+          -v #{Dir.pwd}/db:/rails/db:delegated
           notes:latest
       CMD
       capture: false
