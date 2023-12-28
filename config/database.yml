@@ -26,13 +26,13 @@ default: &default
 
 development:
   <<: *default
-  database: rails_app_test_6_development
+  database: notes_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: rails_app_test_6
+  #username: notes
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -60,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_app_test_6_test
+  database: notes_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: rails_app_test_6_production
-  username: rails_app_test_6
-  password: <%= ENV["RAILS_APP_TEST_6_DATABASE_PASSWORD"] %>
+  database: notes_production
+  username: notes
+  password: <%= ENV["NOTES_DATABASE_PASSWORD"] %>
