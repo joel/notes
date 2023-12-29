@@ -1,0 +1,74 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "b9d2e1b71a662d293c29308cfbd7226856a1c0ac098a160fd5f07c1c40ab3608",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/users/show.html.erb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => User.find(params[:id]), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "UsersController",
+          "method": "show",
+          "line": 14,
+          "file": "app/controllers/users_controller.rb",
+          "rendered": {
+            "name": "users/show",
+            "file": "app/views/users/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "users/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "d7fd46cce726d90f11069a821b60def4cbf98a3465f533d3131141adf2867893",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/posts/show.html.erb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Post.find(params[:id]), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PostsController",
+          "method": "show",
+          "line": 14,
+          "file": "app/controllers/posts_controller.rb",
+          "rendered": {
+            "name": "posts/show",
+            "file": "app/views/posts/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "posts/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2023-12-29 16:09:04 +0100",
+  "brakeman_version": "6.1.1"
+}
