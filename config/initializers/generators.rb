@@ -8,6 +8,6 @@ Rails.application.config.generators do |generator|
   generator.controller_specs true
   generator.view_specs true
   generator.routing_specs true
-  generator.request_specs false
+  generator.request_specs true
   generator.system_specs true
 end
