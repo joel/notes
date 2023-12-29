@@ -4,6 +4,21 @@
 # https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings#chrome
 # https://peter.sh/experiments/chromium-command-line-switches/
 
+# Warning: Rack::Handler is deprecated and replaced by Rackup::Handler
+# Should be fixed in the next Capybara version
+# https://github.com/teamcapybara/capybara/issues/2705
+# Current version: capybara (3.39.2)
+
+unless Gem.loaded_specs["capybara"].version.to_s == "3.39.2"
+  raise "Capybara seems to updated, so please remove this monkey patch #{__FILE__}:#{__LINE__} the warning should be fixed."
+  # Warning: Rack::Handler is deprecated and replaced by Rackup::Handler
+end
+
+require "rackup"
+module Rack
+  Handler = ::Rackup::Handler
+end
+
 Capybara.register_driver :custom_driver do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   # Adds the --disable-gpu argument to Chrome options. This is primarily used to help in environments
