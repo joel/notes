@@ -14,10 +14,12 @@ unless Gem.loaded_specs["capybara"].version.to_s == "3.39.2"
   # Warning: Rack::Handler is deprecated and replaced by Rackup::Handler
 end
 
+# Start: Monkey patch to fix the warning
 require "rackup"
 module Rack
   Handler = ::Rackup::Handler
 end
+# End: Monkey patch to fix the warning
 
 Capybara.register_driver :custom_driver do |app|
   options = Selenium::WebDriver::Chrome::Options.new
