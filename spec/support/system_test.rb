@@ -31,6 +31,10 @@ end
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
-    driven_by :custom_driver
+    if ENV["CI"].present?
+      driven_by :selenium, using: :headless_chrome
+    else
+      driven_by :custom_driver
+    end
   end
 end
