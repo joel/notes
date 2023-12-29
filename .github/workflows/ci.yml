@@ -2,6 +2,10 @@ name: CI
 
 on: [ push ]
 
+env:
+  CI: true
+  RAILS_ENV: test
+
 jobs:
 
   lint:
@@ -44,3 +48,9 @@ jobs:
         run: |
           gem install bundle-audit
           bundle-audit check --update -v
+      -
+        name: "Test / unit tests"
+        run: bin/bundle exec rspec spec --exclude-pattern "spec/system/**/*_spec.rb"
+      -
+        name: "Test / system tests"
+        run: bin/bundle exec rspec spec/system
