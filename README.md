@@ -54,6 +54,6 @@ Contributions to improve Notes are welcome. Please follow these steps to contrib
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-Your Name - [joel.azemar@gmail.com](mailto:joel.azemar@gmail.com)
+Joel A. - [joel.azemar@gmail.com](mailto:joel.azemar@gmail.com)
 
 Project Link: [https://github.com/joel/notes](https://github.com/joel/notes)
