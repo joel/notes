@@ -36,6 +36,9 @@ jobs:
           gem install rubocop-factory_bot
           rubocop --parallel
       -
+        name: Install dependencies
+        run: bin/bundle install --jobs 4 --retry 3
+      -
         name: "Lint / erblint"
         run: bin/erblint --lint-all
       -
