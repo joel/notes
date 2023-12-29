@@ -8,7 +8,9 @@ env:
 
 jobs:
 
-  lint:
+  test:
+
+    name: Lint, Security, Unit and System Tests
 
     runs-on: ubuntu-latest
 
@@ -38,7 +40,7 @@ jobs:
         with:
           ruby-version: 3.2.2
       -
-        name: "Lint / rubocop"
+        name: "Lint / Rubocop / Ruby code"
         run: |
           gem install rubocop
           gem install rubocop-performance
@@ -53,28 +55,28 @@ jobs:
         name: Install dependencies
         run: bin/bundle install --jobs 4 --retry 3
       -
-        name: "Lint / erblint"
+        name: "Lint / Views"
         run: bin/erblint --lint-all
       -
-        name: "Security / brakeman"
+        name: "Security / Brakeman"
         run: |
           gem install brakeman
           brakeman --exit-on-warn --no-progress --color --output /dev/stdout
       -
-        name: "Security / bundle-audit"
+        name: "Security / bundle-audit / Common Vulnerabilities and Exposures check"
         run: |
           gem install bundle-audit
           bundle-audit check --update -v
       -
-        name: "Test / unit tests"
+        name: "Test / Unit Tests (controllers, models, helpers, mailers, jobs, lib, requests)"
         run: bin/bundle exec rspec spec --exclude-pattern "spec/system/**/*_spec.rb"
 
-      - name: "Prepare system tests"
+      - name: "Prepare System Tests"
         run: |
           bin/rails db:environment:set RAILS_ENV=test
           bin/rails db:drop db:create db:schema:load
           bin/rails db:migrate
           bin/rails assets:precompile
       -
-        name: "Test / system tests"
+        name: "Test / System Tests"
         run: bin/bundle exec rspec spec/system
