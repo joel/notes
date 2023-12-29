@@ -68,6 +68,13 @@ jobs:
       -
         name: "Test / unit tests"
         run: bin/bundle exec rspec spec --exclude-pattern "spec/system/**/*_spec.rb"
+
+      - name: "Prepare system tests"
+        run: |
+          bin/rails db:environment:set RAILS_ENV=test
+          bin/rails db:drop db:create db:schema:load
+          bin/rails db:migrate
+          bin/rails assets:precompile
       -
         name: "Test / system tests"
         run: bin/bundle exec rspec spec/system
