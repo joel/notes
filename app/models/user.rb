@@ -2,5 +2,5 @@
 
 # Source: https://github.com/rails/rails/blob/7-1-stable/activerecord/lib/rails/generators/active_record/model/templates/model.rb.tt
 class ::User < ApplicationRecord
-  has_many :posts
+  has_many :notes
 end

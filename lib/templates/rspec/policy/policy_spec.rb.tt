@@ -7,7 +7,7 @@ RSpec.describe <%= class_name %>Policy, type: :policy do
   # Custom !!!
   #
   # let(:user) { build_stubbed :user }
-  # let(:record) { build_stubbed :post, draft: false }
+  # let(:record) { build_stubbed :note, draft: false }
   # let(:context) { {user: user} }
 
   describe_rule :index? do

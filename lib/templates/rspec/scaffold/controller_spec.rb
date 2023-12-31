@@ -76,16 +76,16 @@ RSpec.describe <%= controller_class_name %>Controller, <%= type_metatag(:control
     end
   end
 
-  describe "POST #create" do
+  describe "Note #create" do
     context "with valid params" do
       it "creates a new <%= class_name %>" do
         expect {
-          post :create, params: {<%= singular_table_name %>: valid_attributes}, session: valid_session
+          note :create, params: {<%= singular_table_name %>: valid_attributes}, session: valid_session
         }.to change(<%= class_name %>, :count).by(1)
       end
 
       it "redirects to the created <%= singular_table_name %>" do
-        post :create, params: {<%= singular_table_name %>: valid_attributes}, session: valid_session
+        note :create, params: {<%= singular_table_name %>: valid_attributes}, session: valid_session
         expect(response).to redirect_to(<%= class_name %>.last)
       end
     end
@@ -93,12 +93,12 @@ RSpec.describe <%= controller_class_name %>Controller, <%= type_metatag(:control
     context "with invalid params" do
     <% if Rails.version.to_f < 7.0 %>
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {<%= singular_table_name %>: invalid_attributes}, session: valid_session
+        note :create, params: {<%= singular_table_name %>: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
     <% else %>
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post :create, params: {<%= singular_table_name %>: invalid_attributes}, session: valid_session
+        note :create, params: {<%= singular_table_name %>: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
       end
     <% end %>

@@ -5,11 +5,11 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Posts</h1>
-    <%= link_to "New post", new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl">Notes</h1>
+    <%= link_to "New note", new_note_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="posts" class="min-w-full">
-    <%= render @posts %>
+  <div id="notes" class="min-w-full">
+    <%= render @notes %>
   </div>
 </div>

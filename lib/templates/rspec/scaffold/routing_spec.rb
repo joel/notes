@@ -28,7 +28,7 @@ RSpec.describe <%= controller_class_name %>Controller, <%= type_metatag(:routing
 <% end -%>
 
     it "routes to #create" do
-      expect(post: "/<%= ns_table_name %>").to route_to("<%= ns_table_name %>#create")
+      expect(note: "/<%= ns_table_name %>").to route_to("<%= ns_table_name %>#create")
     end
 
     it "routes to #update via PUT" do

@@ -1,60 +1,60 @@
 # frozen_string_literal: true
 
 # Source: https://github.com/rails/rails/blob/7-1-stable/railties/lib/rails/generators/rails/scaffold_controller/templates/controller.rb.tt
-class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+class NotesController < ApplicationController
+  before_action :set_note, only: %i[show edit update destroy]
 
-  # GET /posts
+  # GET /notes
   def index
-    @posts = Post.all
+    @notes = Note.all
   end
 
-  # GET /posts/1
+  # GET /notes/1
   def show; end
 
-  # GET /posts/new
+  # GET /notes/new
   def new
-    @post = Post.new(title: "A Post", body: "...", user_id: User.first.id)
+    @note = Note.new(title: "A Note", body: "...", user_id: User.first.id)
   end
 
-  # GET /posts/1/edit
+  # GET /notes/1/edit
   def edit; end
 
-  # POST /posts
+  # POST /notes
   def create
-    @post = Post.new(post_params)
+    @note = Note.new(note_params)
 
-    if @post.save
-      redirect_to @post, notice: "Post was successfully created."
+    if @note.save
+      redirect_to @note, notice: "Note was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /posts/1
+  # PATCH/PUT /notes/1
   def update
-    if @post.update(post_params)
-      redirect_to @post, notice: "Post was successfully updated.", status: :see_other
+    if @note.update(note_params)
+      redirect_to @note, notice: "Note was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /posts/1
+  # DELETE /notes/1
   def destroy
-    @post.destroy!
-    redirect_to posts_url, notice: "Post was successfully destroyed.", status: :see_other
+    @note.destroy!
+    redirect_to notes_url, notice: "Note was successfully destroyed.", status: :see_other
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_post
-    @post = Post.find(params[:id])
+  def set_note
+    @note = Note.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
-  def post_params
-    params.require(:post).permit(:title, :body, :user_id)
+  def note_params
+    params.require(:note).permit(:title, :body, :user_id)
   end
 end

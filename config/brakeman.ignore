@@ -40,26 +40,26 @@
       "fingerprint": "d7fd46cce726d90f11069a821b60def4cbf98a3465f533d3131141adf2867893",
       "check_name": "Render",
       "message": "Render path contains parameter value",
-      "file": "app/views/posts/show.html.erb",
+      "file": "app/views/notes/show.html.erb",
       "line": 8,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => Post.find(params[:id]), {})",
+      "code": "render(action => Note.find(params[:id]), {})",
       "render_path": [
         {
           "type": "controller",
-          "class": "PostsController",
+          "class": "NotesController",
           "method": "show",
           "line": 14,
-          "file": "app/controllers/posts_controller.rb",
+          "file": "app/controllers/notes_controller.rb",
           "rendered": {
-            "name": "posts/show",
-            "file": "app/views/posts/show.html.erb"
+            "name": "notes/show",
+            "file": "app/views/notes/show.html.erb"
           }
         }
       ],
       "location": {
         "type": "template",
-        "template": "posts/show"
+        "template": "notes/show"
       },
       "user_input": "params[:id]",
       "confidence": "Weak",

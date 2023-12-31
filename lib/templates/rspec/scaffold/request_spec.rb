@@ -63,16 +63,16 @@ RSpec.describe "/<%= name.underscore.pluralize %>", <%= type_metatag(:request) %
     end
   end
 
-  describe "POST /create" do
+  describe "Note /create" do
     context "with valid parameters" do
       it "creates a new <%= class_name %>" do
         expect {
-          post <%= index_helper %>_url, params: { <%= singular_table_name %>: valid_attributes }
+          note <%= index_helper %>_url, params: { <%= singular_table_name %>: valid_attributes }
         }.to change(<%= class_name %>, :count).by(1)
       end
 
       it "redirects to the created <%= singular_table_name %>" do
-        post <%= index_helper %>_url, params: { <%= singular_table_name %>: valid_attributes }
+        note <%= index_helper %>_url, params: { <%= singular_table_name %>: valid_attributes }
         expect(response).to redirect_to(<%= show_helper(class_name+".last") %>)
       end
     end
@@ -80,18 +80,18 @@ RSpec.describe "/<%= name.underscore.pluralize %>", <%= type_metatag(:request) %
     context "with invalid parameters" do
       it "does not create a new <%= class_name %>" do
         expect {
-          post <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
+          note <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
         }.to change(<%= class_name %>, :count).by(0)
       end
 
     <% if Rails.version.to_f < 7.0 %>
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
+        note <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
         expect(response).to be_successful
       end
     <% else %>
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
+        note <%= index_helper %>_url, params: { <%= singular_table_name %>: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     <% end %>
