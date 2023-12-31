@@ -26,10 +26,10 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: -
+-- Name: notes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.posts (
+CREATE TABLE public.notes (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     title character varying,
     body text,
@@ -69,11 +69,11 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.posts
-    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.notes
+    ADD CONSTRAINT notes_pkey PRIMARY KEY (id);
 
 
 --
@@ -93,17 +93,17 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_notes_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
+CREATE INDEX index_notes_on_user_id ON public.notes USING btree (user_id);
 
 
 --
--- Name: posts fk_rails_5b5ddfd518; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: notes fk_rails_5b5ddfd518; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.posts
+ALTER TABLE ONLY public.notes
     ADD CONSTRAINT fk_rails_5b5ddfd518 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
@@ -114,6 +114,7 @@ ALTER TABLE ONLY public.posts
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20231231124227'),
 ('20231228105853'),
 ('20231228105847'),
 ('20231228105803');
