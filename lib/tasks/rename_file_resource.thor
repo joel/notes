@@ -29,13 +29,16 @@ module PostCreation
 
           next if /assets/.match?(file_name)
           next if /tmp/.match?(file_name)
-          # say "Processing file #{file_name}"
 
           # Rename file if it contains the old name
           new_file_name = file_name.gsub(old_name_regex) { |match| match_case(match, new_name) }
 
+          # Ensure the target directory exists before moving the file
+          ensure_directory_exists(new_file_name)
+
           if file_name != new_file_name
             say "Renaming file #{file_name} to #{new_file_name}"
+
             FileUtils.mv(file_name, new_file_name)
           end
         end
@@ -50,6 +53,10 @@ module PostCreation
         old == old.downcase ? new_name.downcase : new_name.capitalize
       end
 
+      def ensure_directory_exists(file_path)
+        dirname = File.dirname(file_path)
+        FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
+      end
     end
   end
 end
