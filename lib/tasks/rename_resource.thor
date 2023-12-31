@@ -17,7 +17,7 @@ module PostCreation
       desc "name", "Run script to update the name of a resource"
 
       # bundle exec thor update:name old_name new_name
-      def name
+      def name(&)
         # Define case-insensitive regular expression for old name
         say "Processing files and directories in #{Dir.pwd}"
         say "Renaming [#{old_name}] to [#{new_name}] in files and their content"
@@ -27,21 +27,20 @@ module PostCreation
         Dir.glob("**/*").each do |file_name|
           next unless File.file?(file_name)
 
-          next if /assets/.match?(file_name)
-          next if /tmp/.match?(file_name)
+          next if file_name.include?("assets")
+          next if file_name.include?("tmp")
 
-          new_content = File.read(file_name).gsub(old_name_regex) { |match| yield(match) }
+          new_content = File.read(file_name).gsub(old_name_regex, &)
           old_content = File.read(file_name)
 
           if new_content != old_content
             say "Updating content of file #{file_name}"
-            File.open(file_name, 'w') { |file| file.write(new_content) }
+            File.write(file_name, new_content)
           end
         end
 
         say_status("done", "Renamed #{old_name} to #{new_name} in files and their content", :green)
       end
-
     end
   end
 end

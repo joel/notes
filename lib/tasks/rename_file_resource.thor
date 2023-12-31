@@ -27,8 +27,8 @@ module PostCreation
         Dir.glob("**/*").each do |file_name|
           next unless File.file?(file_name)
 
-          next if /assets/.match?(file_name)
-          next if /tmp/.match?(file_name)
+          next if file_name.include?("assets")
+          next if file_name.include?("tmp")
 
           # Rename file if it contains the old name
           new_file_name = file_name.gsub(old_name_regex) { |match| match_case(match, new_name) }
@@ -36,11 +36,11 @@ module PostCreation
           # Ensure the target directory exists before moving the file
           ensure_directory_exists(new_file_name)
 
-          if file_name != new_file_name
-            say "Renaming file #{file_name} to #{new_file_name}"
+          next unless file_name != new_file_name
 
-            FileUtils.mv(file_name, new_file_name)
-          end
+          say "Renaming file #{file_name} to #{new_file_name}"
+
+          FileUtils.mv(file_name, new_file_name)
         end
 
         say_status("done", "Renamed #{old_name} to #{new_name} in files and their content", :green)
