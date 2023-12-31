@@ -3,6 +3,40 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
+      "fingerprint": "0d6508a3a73e61f89b55f5578f080fbeda0b9d91227a34628e08b5b5ec7e2c3f",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/notes/show.html.erb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Note.find(params[:id]), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "NotesController",
+          "method": "show",
+          "line": 14,
+          "file": "app/controllers/notes_controller.rb",
+          "rendered": {
+            "name": "notes/show",
+            "file": "app/views/notes/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "notes/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
       "fingerprint": "b9d2e1b71a662d293c29308cfbd7226856a1c0ac098a160fd5f07c1c40ab3608",
       "check_name": "Render",
       "message": "Render path contains parameter value",
@@ -33,42 +67,8 @@
         22
       ],
       "note": ""
-    },
-    {
-      "warning_type": "Dynamic Render Path",
-      "warning_code": 15,
-      "fingerprint": "d7fd46cce726d90f11069a821b60def4cbf98a3465f533d3131141adf2867893",
-      "check_name": "Render",
-      "message": "Render path contains parameter value",
-      "file": "app/views/notes/show.html.erb",
-      "line": 8,
-      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => Note.find(params[:id]), {})",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "NotesController",
-          "method": "show",
-          "line": 14,
-          "file": "app/controllers/notes_controller.rb",
-          "rendered": {
-            "name": "notes/show",
-            "file": "app/views/notes/show.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "notes/show"
-      },
-      "user_input": "params[:id]",
-      "confidence": "Weak",
-      "cwe_id": [
-        22
-      ],
-      "note": ""
     }
   ],
-  "updated": "2023-12-29 16:09:04 +0100",
+  "updated": "2023-12-31 13:50:26 +0100",
   "brakeman_version": "6.1.1"
 }
