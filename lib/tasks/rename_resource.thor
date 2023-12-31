@@ -38,7 +38,7 @@ module PostCreation
           #   FileUtils.mv(file_name, new_file_name)
           # end
 
-          new_content = content = File.read(file_name).gsub(regexp) { |match| yield(match) }
+          new_content = content = File.read(file_name).gsub(old_name_regex) { |match| yield(match) }
           old_content = File.read(file_name)
 
           if new_content != old_content
