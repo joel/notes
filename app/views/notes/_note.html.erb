@@ -1,19 +1,15 @@
-
 <div id="<%= dom_id note %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= note.title %>
-  </p>
+  <div class="my-5 flex justify-start items-start">
+    <h1 class="font-bold text-4xl"><%= note.title %></h1>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
+  <div class="my-5 flex justify-start items-start">
     <%= note.body %>
-  </p>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
+  <div class="my-5 flex justify-start items-start">
     <%= note.user.name %>
-  </p>
+  </div>
 
   <% if action_name != "show" %>
     <%= link_to "Show this note", note, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
