@@ -15,7 +15,7 @@ class Web < Thor
   desc "build", "Builds the app"
   def build
     say "Building the app"
-    run("docker build -t notes .", capture: true)
+    run("docker build -t workanywhere/notes:latest .", capture: true)
 
     run("docker network create notes-bridge-docker-network", capture: true)
   end
@@ -26,7 +26,7 @@ class Web < Thor
     run(
       <<~CMD.gsub(/\s+/, " ").strip,
         docker run --rm --name notes-web \
-          --publish 3000:3000 \
+          --publish 4005:3000 \
           --env POSTGRES_HOST_AUTH_METHOD=trust \
           --env DATABASE_URL=postgres://postgres@notes-db:5432/notes_development \
           --env RAILS_ENV=development \
@@ -39,7 +39,7 @@ class Web < Thor
           -v #{Dir.pwd}/config:/rails/config:delegated \
           -v #{Dir.pwd}/lib:/rails/lib:delegated \
           -v #{Dir.pwd}/db:/rails/db:delegated
-          notes:latest
+          workanywhere/notes:latest
       CMD
       capture: false
     )

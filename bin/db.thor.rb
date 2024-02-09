@@ -16,15 +16,16 @@ class Db < Thor
     run("docker network create notes-bridge-docker-network", capture: true)
     run("docker volume create notes-data-volume", capture: true)
 
+    # --publish 5432:5432 \
+
     run(
       <<~CMD.gsub(/\s+/, " ").strip,
         docker run --rm --detach --name notes-db \
-          --publish 5432:5432 \
           --env POSTGRES_HOST_AUTH_METHOD=trust \
           --network notes-bridge-docker-network \
           --env PGDATA=/var/lib/postgresql/data/pgdata \
           -v notes-data-volume:/var/lib/postgresql/data:delegated \
-          --detach postgres:14.10
+          postgres:14.10
       CMD
       capture: true
     )
